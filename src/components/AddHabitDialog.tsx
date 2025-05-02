@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,7 +17,7 @@ interface AddHabitDialogProps {
   onAddHabit: (title: string, description: string) => void;
 }
 
-const AddHabitDialog: React.FC<AddHabitDialogProps> = ({ onAddHabit }) => {
+const AddHabitDialog = forwardRef<HTMLButtonElement, AddHabitDialogProps>(({ onAddHabit }, ref) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ const AddHabitDialog: React.FC<AddHabitDialogProps> = ({ onAddHabit }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-habit hover:bg-habit-dark">
+        <Button ref={ref} className="bg-habit hover:bg-habit-dark">
           Add New Habit
         </Button>
       </DialogTrigger>
@@ -85,6 +85,8 @@ const AddHabitDialog: React.FC<AddHabitDialogProps> = ({ onAddHabit }) => {
       </DialogContent>
     </Dialog>
   );
-};
+});
+
+AddHabitDialog.displayName = 'AddHabitDialog';
 
 export default AddHabitDialog;
