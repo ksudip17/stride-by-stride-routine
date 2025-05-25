@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import { Habit } from "@/types/habit";
-import HabitList from "@/components/HabitList";
 import AddHabitDialog from "@/components/AddHabitDialog";
 import EmptyState from "@/components/EmptyState";
 import HabitStats from "@/components/HabitStats";
